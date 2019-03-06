@@ -40,9 +40,9 @@ public class Galamsey {
 	/**
 	 * This field represents the measure of the a vegetation's "health" or status, and the likeliness of galamsey around the vegetation.
 	 * 
-	 * The value "1" depicts green and healthy vegetation identified with no “galamsey” presence.
-	 * The value "2" depicts yellow vegetation identified to have fair vegetation with potential “galamsey” presence.
-	 * The value "3" depicts brown and poor vegetation identified with certain “galamsey” presence.
+	 * The value "1" depicts green and healthy vegetation identified with no ï¿½galamseyï¿½ presence.
+	 * The value "2" depicts yellow vegetation identified to have fair vegetation with potential ï¿½galamseyï¿½ presence.
+	 * The value "3" depicts brown and poor vegetation identified with certain ï¿½galamseyï¿½ presence.
 	 */
 	private cValue colorValue;
 	
@@ -52,6 +52,7 @@ public class Galamsey {
 	 * It is related to and restricted by the "colorValue" field. Each colorValue has its own vegetation color.
 	 */
 	private String veg_Color;
+
 	
 	/**
 	 * This field represents the location of the galamsey using latitude and longitude in the "Position" class.
@@ -71,15 +72,18 @@ public class Galamsey {
 	 * @param longitude
 	 * @param year
 	 */
-	public Galamsey(String colorValue, double latitude, double longitude, String year) {
+	public Galamsey(String colorValue, double latitude, double longitude, String year) throws IllegalArgumentException{
 		
 		this.colorValue = cValue.valueOf(colorValue);
 		
 		veg_Color = this.colorValue.getColor();
-		
+
 		this.position = (new Position(latitude, longitude));
 		
-		if(validYear(year)) this.year = year;
+		if(validYear(year))
+			this.year = year;
+		else
+			throw new IllegalArgumentException("Sorry. An illegal value was parsed as a year");
 		
 	}
 	
@@ -171,10 +175,10 @@ public class Galamsey {
 	/**
 	 * @return the colorValue
 	 */
-	public String getColorValue() {
-		if (this.veg_Color == "Green") return "1";
-		if (this.veg_Color == "Yellow") return "2";
-		else return "3";
+	public int getColorValue() {
+		if (this.veg_Color == "Green") return 1;
+		if (this.veg_Color == "Yellow") return 2;
+		else return 3;
 	}
 
 	/**
@@ -200,7 +204,8 @@ public class Galamsey {
 	}
 
 	/**
-	 * @param position the position to set
+	 * @param latitude the latitude of the position as a double
+	 * @param longitude the longitude of the position as a double
 	 */
 	public void setPosition(double latitude, double longitude) {
 		this.position = new Position(latitude, longitude);
