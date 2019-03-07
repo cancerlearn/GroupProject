@@ -11,7 +11,12 @@ import java.lang.Math;
  * This class is modeled after the geographic coordinate system.
  * It consists of longitude and latitude to represent location.
  */
-public class Position {
+public class Position implements java.io.Serializable {
+	
+	/**
+	 * Identification used when deserializing to a Position object to confirm the class
+	 */
+	private static final long serialVersionUID = -578272541301949445L;
 	
 	//Fields of latitude and longitude
 	/**

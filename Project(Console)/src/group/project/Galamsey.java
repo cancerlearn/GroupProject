@@ -14,8 +14,13 @@ import java.util.Calendar;
  * 
  * It holds the details of this occurrence such as vegetation color,location, and the year it occurred.
  */
-public class Galamsey {
+public class Galamsey implements java.io.Serializable {
 	
+	/**
+	 * Identification used when deserializing to a Galamsey object to confirm the class
+	 */
+	private static final long serialVersionUID = 7935919940222170861L;
+
 	/**
 	 * @author group 16
 	 *
@@ -171,7 +176,18 @@ public class Galamsey {
 		}
 		return true;
 	}
+	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Galamsey : ColorValue=" + colorValue + "| VegetationColor=" + veg_Color + "| " + this.getPosition() + "| Year="
+				+ year;
+	}
+
+	
 	/**
 	 * @return the colorValue
 	 */
@@ -227,7 +243,7 @@ public class Galamsey {
 	
 	//Used to test.
 	//Remember to remove when submitting!!
-	/*
+	
 	public static void main(String []args) {
 		Galamsey g1 = new Galamsey("ONE", 40, 30.244, "2019");
 		
@@ -235,6 +251,7 @@ public class Galamsey {
 		System.out.println(g1.getVeg_Color());
 		System.out.println(g1.getPosition());
 		System.out.println(g1.getYear());
-	}*/
+		System.out.println(g1);
+	}
 	
 }
