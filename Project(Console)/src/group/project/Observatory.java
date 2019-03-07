@@ -4,6 +4,7 @@ package group.project;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Group 16
@@ -174,12 +175,12 @@ public class Observatory {
     }
 
     /**
-     * This method return an interable object that contains all recorded galamsey occurrences that have a
+     * This method return an interable list that contains all recorded galamsey occurrences that have a
      * color value greater than a specified base value
      * @param baseColorValue is the base value to be used to determine the galamsey occurrences to add to search result
      * @return search result with galamsey occurrences as an iterable object
      */
-    public Iterable<Galamsey> getGalamseyWithColValOver(int baseColorValue){
+    public List<Galamsey> getGalamseyWithColValOver(int baseColorValue){
         ArrayList<Galamsey> searchResult = new ArrayList<>();           //container to fill up
         //loop through all recorded Galamsey
         for (Galamsey galamseyInstance : recordedEvents){
@@ -212,6 +213,12 @@ public class Observatory {
     }
 
 
+
+    //-------------------------------Start of auxiliary methods-------------------------------
+
+
+
+    //----------------------------------End of auxiliary methods-------------------------------
 
 
 
