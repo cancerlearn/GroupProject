@@ -15,8 +15,12 @@ import java.util.List;
  * It holds details such as the name, date of commencement, all observed and recorded galamsey, as well
  * as some statistical information about the work of the observatory
  */
-public class Observatory {
-	
+public class Observatory implements java.io.Serializable{
+    /**
+     * Identification used when deserializing to a Observatory object to confirm the class
+     */
+    private static final long serialVersionUID = 7978364738809170861L;
+
 	//Definition of Instance Variables
     /**
      * This field stores the name of the observatory

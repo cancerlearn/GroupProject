@@ -3,7 +3,13 @@ package group.project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Monitoring {
+public class Monitoring implements java.io.Serializable{
+    /**
+     * Identification used when deserializing to a Monitoring object to confirm the class
+     */
+    private static final long serialVersionUID = -571008035669649445L;
+
+
     //Instance variables
     /**
      * This field stores a reference to a list of all observatories
