@@ -45,12 +45,12 @@ public class Galamsey implements java.io.Serializable {
 	/**
 	 * This field represents the measure of the a vegetation's "health" or status, and the likeliness of galamsey around the vegetation.
 	 * 
-	 * The value "1" depicts green and healthy vegetation identified with no �galamsey� presence.
-	 * The value "2" depicts yellow vegetation identified to have fair vegetation with potential �galamsey� presence.
-	 * The value "3" depicts brown and poor vegetation identified with certain �galamsey� presence.
+	 * The value "1" depicts green and healthy vegetation identified with no galamsey presence.
+	 * The value "2" depicts yellow vegetation identified to have fair vegetation with potential galamsey presence.
+	 * The value "3" depicts brown and poor vegetation identified with certain galamsey presence.
 	 */
 	private cValue colorValue;
-	
+
 	/**
 	 * This field represents the color of vegetation around the galamsey.
 	 * 
@@ -93,6 +93,14 @@ public class Galamsey implements java.io.Serializable {
 	}
 	
 	/**
+	 * Secondary Constructor
+     * 
+     * This constructor allows for dynamic object creation. Meaning, it is used when the info (parameters) for the object is not known when
+     * the object is initialized and will be gathered later on.
+	 */
+	public Galamsey() {}
+	
+	/**
 	 * 
 	 * 
 	 * @param year
@@ -108,10 +116,6 @@ public class Galamsey implements java.io.Serializable {
 			tempCalObj.setTime(new Date());
 			int currentYear = tempCalObj.get(Calendar.YEAR);
 			int givenYear = Integer.parseInt(year);
-			
-			//remove later
-			System.out.println(tempCalObj.get(Calendar.YEAR));
-			//remove ^ later
 			
 			return (givenYear >= 0) && (givenYear <= currentYear);
 		} catch(Exception e) {

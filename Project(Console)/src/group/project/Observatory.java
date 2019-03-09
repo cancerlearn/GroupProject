@@ -33,9 +33,9 @@ public class Observatory implements java.io.Serializable{
     private String countryName;
 
     /**
-     * This field store the year the work of the observatory was started.
+     * This field stores the year in which galamsey observations started.
      *
-     * Note: The year value is store as a string and not a number. Type convertions should
+     * Note: The year value is store as a string and not a number. Type conversion should
      * be performed when necessary.
      */
     private String yearOfCommencement;
@@ -46,7 +46,7 @@ public class Observatory implements java.io.Serializable{
     private double areaCoveredByObservatory;
 
     /**
-     * This field stores a reference to the list of all galamsey(illegal mining) occurences
+     * This field stores a reference to the list of all galamsey(illegal mining) occurrences
      *  that have been recorded by this observatory
      */
     private ArrayList<Galamsey> recordedEvents;
@@ -87,6 +87,19 @@ public class Observatory implements java.io.Serializable{
         this.countryName = countryName;
         this.yearOfCommencement = yearOfCommencement;
         this.areaCoveredByObservatory = areaCoveredByObservatory;
+        this.recordedEvents = new ArrayList<Galamsey>();
+    }
+    
+    /**
+     * Secondary Constructor
+     * 
+     * This constructor allows for dynamic object creation. Meaning, it is used when the info (parameters) for the object is not known when
+     * the object is initialized and will be gathered later on.
+     */
+    public Observatory() {
+    	
+    	this.recordedEvents = new ArrayList<Galamsey>();
+    	
     }
 	
 	//Getters
@@ -100,7 +113,7 @@ public class Observatory implements java.io.Serializable{
 
     /**
      *
-     * @return the name of the country the observary is located in
+     * @return the name of the country the observatory is located in
      */
     public String getCountryName() {
 		return countryName;
@@ -108,7 +121,7 @@ public class Observatory implements java.io.Serializable{
 
     /**
      *
-     * @return the year the work of the observertory begun/commenced
+     * @return the year the work of the observatory begun/commenced
      */
     public String getYearOfCommencement() {
 		return yearOfCommencement;
@@ -152,13 +165,21 @@ public class Observatory implements java.io.Serializable{
     public void setAreaCoveredByObservatory(double areaCoveredByObservatory) {
         this.areaCoveredByObservatory = areaCoveredByObservatory;
     }
+    
+    /**
+     * 
+     * @param year; the year in which “galamsey” observations started
+     */
+    public void setYearOfCommencement(String year) {
+    	if (validYear(year)) this.yearOfCommencement = year;
+    }
 
 
 	//CLASS METHODS
 
     /**
      *
-     * @return the larges color value recorded for all observed galamsey(illegal mining) occurrences
+     * @return the largest color value recorded for all observed galamsey(illegal mining) occurrences
      */
     public int getLargestGalamseyColor(){return largestColorValue;}
 
@@ -179,7 +200,7 @@ public class Observatory implements java.io.Serializable{
     }
 
     /**
-     * This method return an interable list that contains all recorded galamsey occurrences that have a
+     * This method return an iterable list that contains all recorded galamsey occurrences that have a
      * color value greater than a specified base value
      * @param baseColorValue is the base value to be used to determine the galamsey occurrences to add to search result
      * @return search result with galamsey occurrences as an iterable object
@@ -196,6 +217,8 @@ public class Observatory implements java.io.Serializable{
     }
 
     /**
+     * This method records galamsey events, storing them in the appropriate list,
+     * while simultaneously updating the largestGalamseyColor.
      *
      * @param colorValue
      * @param latitude
@@ -205,22 +228,51 @@ public class Observatory implements java.io.Serializable{
      * @throws IllegalArgumentException when an invalid value (especially year) is parsed as argument to the function
      */
     public void recordGalamsey(String colorValue, double latitude, double longitude, String year)
-            throws IllegalArgumentException{
+            throws IllegalArgumentException {
+    	
         //Create Galamsey Instance
         Galamsey newGalamseyOccurrence =
                 new Galamsey(colorValue, latitude, longitude, year);
-        //update largestGalamseyColor if color value of new occurrence is larges so far
+        
+        //update largestGalamseyColor if color value of new occurrence is the largest so far
         if (newGalamseyOccurrence.getColorValue() > largestColorValue)
             largestColorValue = newGalamseyOccurrence.getColorValue();
+        
         //add to list of galamsey observations
         recordedEvents.add(newGalamseyOccurrence);
     }
 
-
+    /**
+     * Overloaded method for recording galamsey events.
+     * 
+     * @param obj is an Galamsey object 
+     */
+    public void recordGalamsey(Galamsey obj) throws IllegalArgumentException {
+    	
+    	//Create Galamsey Instance
+        Galamsey newGalamseyOccurrence = obj;
+    	
+        //update largestGalamseyColor if color value of new occurrence is the largest so far
+        if (newGalamseyOccurrence.getColorValue() > largestColorValue)
+            largestColorValue = newGalamseyOccurrence.getColorValue();
+        
+        //add to list of galamsey observations
+        recordedEvents.add(newGalamseyOccurrence);
+    	
+    }
 
     //-------------------------------Start of auxiliary methods-------------------------------
 
-
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Observatory [observatoryName=" + observatoryName + ", countryName=" + countryName
+				+ ", yearOfCommencement=" + yearOfCommencement + ", areaCoveredByObservatory="
+				+ areaCoveredByObservatory + ", recordedEvents=" + recordedEvents + ", largestColorValue="
+				+ largestColorValue + ", averageColourValue=" + averageColourValue + "]";
+	}
 
     //----------------------------------End of auxiliary methods-------------------------------
 
@@ -233,22 +285,21 @@ public class Observatory implements java.io.Serializable{
      * @param year
      * @return
      */
-    private boolean validYear(String year) {
+    protected boolean validYear(String year) {
         /**
          * Temporary calendar object created to obtain current year
          */
         Calendar tempCalObj = null;
         try {
+        	
             tempCalObj = new Calendar.Builder().build();
             tempCalObj.setTime(new Date());
+            
             int currentYear = tempCalObj.get(Calendar.YEAR);
             int givenYear = Integer.parseInt(year);
-
-            //remove later
-            System.out.println(tempCalObj.get(Calendar.YEAR));
-            //remove ^ later
-
+            
             return (givenYear >= 0) && (givenYear <= currentYear);
+            
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -259,7 +310,7 @@ public class Observatory implements java.io.Serializable{
 
     //---------------------------End of helper methods--------------------------
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         // TODO Auto-generated method stub
 
     }
