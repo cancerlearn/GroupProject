@@ -2,7 +2,6 @@
  * 
  */
 package group.project;
-import group.project.Position;
 import java.util.Date;
 import java.util.Calendar;
 
@@ -118,7 +117,7 @@ public class Galamsey implements java.io.Serializable {
 			int givenYear = Integer.parseInt(year);
 			
 			return (givenYear >= 0) && (givenYear <= currentYear);
-		} catch(Exception e) {
+		} catch(NumberFormatException e) {
 			e.printStackTrace();
 		}
 		
@@ -196,8 +195,8 @@ public class Galamsey implements java.io.Serializable {
 	 * @return the colorValue
 	 */
 	public int getColorValue() {
-		if (this.veg_Color == "Green") return 1;
-		if (this.veg_Color == "Yellow") return 2;
+		if ("Green".equals(this.veg_Color)) return 1;
+		if ("Yellow".equals(this.veg_Color)) return 2;
 		else return 3;
 	}
 
@@ -248,14 +247,14 @@ public class Galamsey implements java.io.Serializable {
 	//Used to test.
 	//Remember to remove when submitting!!
 	
-	public static void main(String []args) {
-		Galamsey g1 = new Galamsey("ONE", 40, 30.244, "2019");
-		
-		System.out.println(g1.getColorValue());
-		System.out.println(g1.getVeg_Color());
-		System.out.println(g1.getPosition());
-		System.out.println(g1.getYear());
-		System.out.println(g1);
-	}
+//	public static void main(String []args) {
+//		Galamsey g1 = new Galamsey("ONE", 40, 30.244, "2019");
+//		
+//		System.out.println(g1.getColorValue());
+//		System.out.println(g1.getVeg_Color());
+//		System.out.println(g1.getPosition());
+//		System.out.println(g1.getYear());
+//		System.out.println(g1);
+//	}
 	
 }

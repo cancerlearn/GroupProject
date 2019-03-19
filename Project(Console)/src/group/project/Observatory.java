@@ -168,7 +168,7 @@ public class Observatory implements java.io.Serializable{
     
     /**
      * 
-     * @param year; the year in which “galamsey” observations started
+     * @param year; the year in which ï¿½galamseyï¿½ observations started
      */
     public void setYearOfCommencement(String year) {
     	if (validYear(year)) this.yearOfCommencement = year;
@@ -310,9 +310,9 @@ public class Observatory implements java.io.Serializable{
 
     //---------------------------End of helper methods--------------------------
 
-	public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-    }
+//	public static void main(String[] args) {
+//        // TODO Auto-generated method stub
+//
+//    }
 
 }

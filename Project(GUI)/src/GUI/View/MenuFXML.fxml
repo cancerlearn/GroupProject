@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="973.0" stylesheets="@MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MenuFXMLController">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="139.0" layoutY="95.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="351.0">
+               <children>
+                  <AnchorPane layoutX="62.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="320.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="65.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="52.0" prefWidth="229.0" text="GalamseyMonitor" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="Verdana Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="obsData" layoutY="157.0" onAction="#controlButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="GOLD" text="Enter Observatory Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="galData" layoutY="219.0" onAction="#controlButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="SILVER" text="Enter Galamsey Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="stats" layoutY="281.0" onAction="#controlButtonAction" prefHeight="63.0" prefWidth="351.0" ripplerFill="#78b0d0" text="View Statistics" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Icon id="iStat" content="EMPTY" layoutX="80.0" layoutY="302.0" prefHeight="22.0" prefWidth="28.0" stylesheets="@MenuCSS.css" />
+                        <Icon id="iCreate" content="EMPTY" layoutX="84.0" layoutY="240.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="19.0" stylesheets="@MenuCSS.css" />
+                        <Icon id="iCreate" content="EMPTY" layoutX="84.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="19.0" stylesheets="@MenuCSS.css" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="62.0" style="-fx-background-color: #2F4F4F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane fx:id="obsPane" hgap="4.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="130.0" left="10.0" right="10.0" top="80.0" />
+                     </padding>
+                     <children>
+                        <Label text="ADD OBSERVATORY" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                           <font>
+                              <Font name="Verdana Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Name of Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Country of Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Year of Commencement: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Area Covered by Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="addObs_Btn" buttonType="RAISED" ripplerFill="#a6d2e878" text="Add Observatory" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXTextField fx:id="obsName" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="obsCountry" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="obsYear" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="obsArea" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                     </children>
+                  </GridPane>
+                  <JFXTabPane fx:id="statsPane" style="-fx-background-color: white;" stylesheets="@MenuCSS.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <tabs>
+                        <Tab style="-fx-background-color: #36474F;" text="Largest Average Galamsey">
+                          <content>
+                            <AnchorPane fx:id="lag_Pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton fx:id="lagGS_btn" layoutX="231.0" layoutY="335.0" prefHeight="38.0" prefWidth="157.0" ripplerFill="MEDIUMSLATEBLUE" style="-fx-background-color: #6495ED;" text="Get Statistic" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField layoutX="265.0" layoutY="121.0" />
+                                    <Label layoutX="149.0" layoutY="125.0" text="Label" />
+                                    <Label layoutX="149.0" layoutY="170.0" prefHeight="1.0" prefWidth="28.0" text="Label" />
+                                    <Label layoutX="149.0" layoutY="215.0" text="Label" />
+                                    <Label layoutX="149.0" layoutY="260.0" text="Label" />
+                                    <JFXTextField layoutX="265.0" layoutY="166.0" />
+                                    <JFXTextField layoutX="265.0" layoutY="211.0" />
+                                    <JFXTextField layoutX="265.0" layoutY="256.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab style="-fx-background-color: #36474F;" text="Largest Galamsey">
+                          <content>
+                            <AnchorPane fx:id="lg_Pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton fx:id="lgGS_btn" layoutX="235.0" layoutY="335.0" prefHeight="38.0" prefWidth="157.0" ripplerFill="MEDIUMSLATEBLUE" style="-fx-background-color: #6495ED;" text="Get Statistic" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab fx:id="agGS_btn" style="-fx-background-color: #36474F;" text="Arbitrary Galamsey">
+                          <content>
+                            <AnchorPane fx:id="ag_Pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton layoutX="231.0" layoutY="335.0" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: #6495ED;" text="Get Statistic" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+                  <GridPane fx:id="galPane" hgap="4.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="130.0" left="10.0" right="10.0" top="80.0" />
+                     </padding>
+                     <children>
+                        <JFXRadioButton fx:id="cv_ONE" text="ONE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </JFXRadioButton>
+                        <Label text="ColorValue: " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXRadioButton fx:id="cv_TWO" text="TWO" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="cv_THREE" text="THREE" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </JFXRadioButton>
+                        <Label fx:id="vegColorText" text="Color of vegetation due to color-value assigned." textFill="#00000078" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                        <Label text="Position: " GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXTextField fx:id="pos_Latitude" promptText="Latitude (-90 to 90)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                        <JFXTextField fx:id="pos_Longitude" promptText=" Longitude (-180 to 180)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="yearField" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <Label text="Year: " GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXButton fx:id="addGal_btn" buttonType="RAISED" ripplerFill="#a7d2e878" text="Add Event" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <Label text="ADD GALAMSEY EVENT" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                           <font>
+                              <Font name="Verdana Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

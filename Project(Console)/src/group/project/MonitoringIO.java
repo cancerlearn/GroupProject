@@ -2,9 +2,6 @@
  * 
  */
 package group.project;
-import group.project.Observatory;
-import group.project.Galamsey;
-import group.project.Monitoring;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
@@ -23,6 +20,9 @@ import java.io.File;
  * 
  */
 public class MonitoringIO {
+	
+	static Scanner takeInput = new Scanner(System.in);
+	
 	/**
 	 * Monitoring object created to have access to all observatories.
 	 */
@@ -43,11 +43,6 @@ public class MonitoringIO {
 				objRead = new ObjectInputStream(new FileInputStream("GalamseyRecords.txt"));
 				m1 = (Monitoring) objRead.readObject();
 				System.out.println(m1.getObservatories());
-				/*for (Observatory o: m1.getObservatories()) {
-					
-					System.out.println(o+"\n");
-					
-				}*/
 				
 			}
 			
@@ -57,13 +52,9 @@ public class MonitoringIO {
 			fnfe.printStackTrace();
 			System.out.println("File does not exist.");
 			
-		} catch(IOException ioe) {
+		} catch(IOException | ClassNotFoundException ioe) {
 			
 			ioe.printStackTrace();
-			
-		} catch(ClassNotFoundException cnfe) {
-			
-			cnfe.printStackTrace();
 			
 		} finally {
 			
@@ -87,8 +78,6 @@ public class MonitoringIO {
 		System.out.println("\n\nWelcome to 'Create an Observatory'!\n\n"+
 		"Input the following information correctly to create an observatory.\nInput 'done' to end this process.\n\n");
 		
-		Scanner takeInput = new Scanner(System.in);
-		
 		String userCommand = "";
 		while(true) {
 			
@@ -105,9 +94,9 @@ public class MonitoringIO {
 			System.out.println("\n---> Year of Commencement: ");
 			userCommand = takeInput.nextLine();
 			if (o1.validYear(userCommand)) o1.setYearOfCommencement(userCommand);
-			else { System.out.println("Invalid year! Try again.\n\n\n\n"); continue;};
+			else { System.out.println("Invalid year! Try again.\n\n\n\n"); continue;}
 			
-			System.out.println("\n---> Area covered by observatory in km: ");
+			System.out.println("\n---> Area covered by observatory in km^2: ");
 			userCommand = takeInput.nextLine();
 			try{
 				o1.setAreaCoveredByObservatory(Double.parseDouble(userCommand));
@@ -152,8 +141,6 @@ public class MonitoringIO {
 		Galamsey g1 = new Galamsey();
 		
 		System.out.println("\n\nWelcome to 'Add Galamsey Event'!\n\n");
-		
-		Scanner takeInput = new Scanner(System.in);
 		
 		String userCommand = "";
 		
@@ -210,7 +197,8 @@ public class MonitoringIO {
 					
 					System.out.println("\n---> Year Recorded: ");
 					userCommand = takeInput.nextLine();
-					if (updatedObs.validYear(userCommand)) g1.setYear(userCommand);
+					//If valid year, and if the year is after or in the same year as the observatory began the records
+					if (updatedObs.validYear(userCommand) && Integer.parseInt(ob.getYearOfCommencement()) <=  Integer.parseInt(userCommand)) g1.setYear(userCommand);
 					else {
 						
 						System.out.println("Invalid year! Try again.\n\n\n\n");
@@ -229,7 +217,15 @@ public class MonitoringIO {
 			
 			if(!observatoryFound.equals("yes")) {
 				
-				System.out.println("\nNo such observatory exists. Try again.\nThis is the list of observatories: " + obs.toString() + "\n\n");
+				System.out.println("\nNo such observatory exists. Try again.\nThis is the list of observatories:\n");
+				
+				for (Observatory o: obs) {
+					
+					System.out.println(o.toString() + "\n\n");
+					
+				}
+				
+				
 				continue;
 			
 			}
@@ -257,26 +253,20 @@ public class MonitoringIO {
 			}
 			
 			
-			/*System.out.println("Input (Enter 'done' to end this process or 'again' to try again): ");
-			userCommand = takeInput.nextLine();
-			if (userCommand.equals("again")) continue;
-			break;*/
 		}
 		
 		
 	}
 	
 	/**
-	 * 
+	 * This method produces the statistics view of galamsey and observatories on the console.
 	 */
 	private static void statsMenu() {
 		
 		System.out.println("\n\nWelcome to 'ViewStats'!\n\n"+
 				"Select one of the many options to view general monitoring statistics on the observatories "
 				+ "and the galamsey events they record.\nInput the corresponging number to view the stat and 'done' to end this process.\n\n");
-				
-		Scanner takeInput = new Scanner(System.in);
-				
+						
 		String userCommand = "";
 		
 		while(true) {
@@ -310,8 +300,8 @@ public class MonitoringIO {
 			
 			}
 			
-			if (!userCommand.equals("done"))System.out.println("\n\nStat shown.\nInput 'done' to end this process or 'again' to view another stat.\n");
-			//userCommand = takeInput.nextLine();
+			if (!userCommand.equals("done"))System.out.println("\nStat shown.\nInput 'done' to end this process or 'again' to view another stat.\n");
+			
 			if (userCommand.equals("done")) {
 				
 				System.out.println("Menu\n\n"+
@@ -378,13 +368,11 @@ public class MonitoringIO {
 		"--> Exit"+
 		"\n\n*Type 'eod' to enter observatory data, 'egd' to enter galamsey data, and 'stats' to view statistics.\nEnter 'exit' to end application.");
 		
-		Scanner input = new Scanner(System.in);
-		
 		String command = "";
 		while(true) {
 			
 			System.out.println("\n\nInput: ");
-			command = input.nextLine();
+			command = takeInput.nextLine();
 			
 			if (command.equals("eod")) observatoryData();
 			
@@ -399,7 +387,7 @@ public class MonitoringIO {
 			
 		}
 		
-		input.close();
+		takeInput.close();
 	}
 	
 }
