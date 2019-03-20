@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
@@ -29,9 +30,9 @@
                               <Font name="Verdana Bold" size="18.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="obsData" layoutY="157.0" onAction="#controlButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="GOLD" text="Enter Observatory Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <JFXButton fx:id="galData" layoutY="219.0" onAction="#controlButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="SILVER" text="Enter Galamsey Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <JFXButton fx:id="stats" layoutY="281.0" onAction="#controlButtonAction" prefHeight="63.0" prefWidth="351.0" ripplerFill="#78b0d0" text="View Statistics" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="obsData" layoutY="157.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="GOLD" text="Enter Observatory Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="galData" layoutY="219.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="SILVER" text="Enter Galamsey Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="stats" layoutY="281.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="351.0" ripplerFill="#78b0d0" text="View Statistics" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Icon id="iStat" content="EMPTY" layoutX="80.0" layoutY="302.0" prefHeight="22.0" prefWidth="28.0" stylesheets="@MenuCSS.css" />
                         <Icon id="iCreate" content="EMPTY" layoutX="84.0" layoutY="240.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="19.0" stylesheets="@MenuCSS.css" />
                         <Icon id="iCreate" content="EMPTY" layoutX="84.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="19.0" stylesheets="@MenuCSS.css" />
@@ -46,69 +47,6 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <GridPane fx:id="obsPane" hgap="4.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <padding>
-                        <Insets bottom="130.0" left="10.0" right="10.0" top="80.0" />
-                     </padding>
-                     <children>
-                        <Label text="ADD OBSERVATORY" GridPane.columnIndex="2" GridPane.columnSpan="2">
-                           <font>
-                              <Font name="Verdana Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Name of Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label text="Country of Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label text="Year of Commencement: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label text="Area Covered by Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <JFXButton fx:id="addObs_Btn" buttonType="RAISED" ripplerFill="#a6d2e878" text="Add Observatory" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXTextField fx:id="obsName" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                        <JFXTextField fx:id="obsCountry" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-                        <JFXTextField fx:id="obsYear" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                        <JFXTextField fx:id="obsArea" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                     </children>
-                  </GridPane>
                   <JFXTabPane fx:id="statsPane" style="-fx-background-color: white;" stylesheets="@MenuCSS.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <tabs>
                         <Tab style="-fx-background-color: #36474F;" text="Largest Average Galamsey">
@@ -187,7 +125,7 @@
                         <Insets bottom="130.0" left="10.0" right="10.0" top="80.0" />
                      </padding>
                      <children>
-                        <JFXRadioButton fx:id="cv_ONE" text="ONE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <JFXRadioButton fx:id="cv_ONE" onAction="#controlRadioButtons" text="ONE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -200,17 +138,17 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <JFXRadioButton fx:id="cv_TWO" text="TWO" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <JFXRadioButton fx:id="cv_TWO" onAction="#controlRadioButtons" text="TWO" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </JFXRadioButton>
-                        <JFXRadioButton fx:id="cv_THREE" text="THREE" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                        <JFXRadioButton fx:id="cv_THREE" onAction="#controlRadioButtons" text="THREE" GridPane.columnIndex="4" GridPane.rowIndex="2">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </JFXRadioButton>
-                        <Label fx:id="vegColorText" text="Color of vegetation due to color-value assigned." textFill="#00000078" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                        <Label fx:id="vegColorTxt" text="Color of vegetation due to color-value assigned." textFill="#00000078" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3" />
                         <Label text="Position: " GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -219,8 +157,8 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <JFXTextField fx:id="pos_Latitude" promptText="Latitude (-90 to 90)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                        <JFXTextField fx:id="pos_Longitude" promptText=" Longitude (-180 to 180)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="pos_Latitude" promptText="Latitude (-90° to 90°)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                        <JFXTextField fx:id="pos_Longitude" promptText=" Longitude (-180° to 180°)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
                         <JFXTextField fx:id="yearField" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                         <Label text="Year: " GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
@@ -230,7 +168,7 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <JFXButton fx:id="addGal_btn" buttonType="RAISED" ripplerFill="#a7d2e878" text="Add Event" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                        <JFXButton fx:id="addGal_btn" buttonType="RAISED" onAction="#controlAddGalamseyButtonAction" ripplerFill="#a7d2e878" text="Add Event" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -240,6 +178,76 @@
                               <Font name="Verdana Bold" size="14.0" />
                            </font>
                         </Label>
+                        <Label text="Observatory: " GridPane.columnIndex="3" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="galObsName" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <ChoiceBox fx:id="galObsName_CB" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="obsPane" hgap="4.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="130.0" left="10.0" right="10.0" top="80.0" />
+                     </padding>
+                     <children>
+                        <Label text="CREATE OBSERVATORY" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                           <font>
+                              <Font name="Verdana Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Name of Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Country of Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Year of Commencement: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Area Covered by Observatory: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="addObs_btn" buttonType="RAISED" onAction="#controlObservatoryButtonAction" ripplerFill="#a6d2e878" text="Add Observatory" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXTextField fx:id="obsNameField" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="obsCountryField" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="obsYearField" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="obsAreaField" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                      </children>
                   </GridPane>
                </children>

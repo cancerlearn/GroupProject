@@ -31,7 +31,7 @@ public class FXMain extends Application {
             //Create the FXMLLoader
             FXMLLoader loader = new FXMLLoader();
             
-            Parent root = FXMLLoader.load(getClass().getResource("MenuFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("GUI_FXML.fxml"));
             
             Scene scene = new Scene(root, 973, 614);
             

@@ -106,7 +106,7 @@ public class Galamsey implements java.io.Serializable {
 	 * @param year
 	 * @return
 	 */
-	private boolean validYear(String year) {
+	public static boolean validYear(String year) {
 		/**
 		 * Temporary calendar object created to obtain current year
 		 */
