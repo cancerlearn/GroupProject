@@ -30,9 +30,9 @@
                               <Font name="Verdana Bold" size="18.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="obsData" layoutY="157.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="GOLD" text="Enter Observatory Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <JFXButton fx:id="galData" layoutY="219.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="SILVER" text="Enter Galamsey Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <JFXButton fx:id="stats" layoutY="281.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="351.0" ripplerFill="#78b0d0" text="View Statistics" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="obsData" layoutY="157.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="SILVER" text="Enter Observatory Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="galData" layoutY="219.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="229.0" ripplerFill="GOLD" text="Enter Galamsey Data" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="stats" layoutY="281.0" onAction="#controlMenuButtonAction" prefHeight="63.0" prefWidth="351.0" ripplerFill="#c3672a" text="View Statistics" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Icon id="iStat" content="EMPTY" layoutX="80.0" layoutY="302.0" prefHeight="22.0" prefWidth="28.0" stylesheets="@MenuCSS.css" />
                         <Icon id="iCreate" content="EMPTY" layoutX="84.0" layoutY="240.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="19.0" stylesheets="@MenuCSS.css" />
                         <Icon id="iCreate" content="EMPTY" layoutX="84.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="19.0" stylesheets="@MenuCSS.css" />
@@ -183,8 +183,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="galObsName" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                        <ChoiceBox fx:id="galObsName_CB" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                        <ChoiceBox fx:id="galObsName_CB" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
                      </children>
                   </GridPane>
                   <GridPane fx:id="obsPane" hgap="4.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

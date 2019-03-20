@@ -45,7 +45,7 @@ public class MenuFXMLController implements Initializable {
     private JFXButton obsData, galData, stats, addGal_btn, addObs_btn;
     
     @FXML
-    private JFXTextField pos_Latitude, pos_Longitude, yearField, galObsName, 
+    private JFXTextField pos_Latitude, pos_Longitude, yearField, 
             obsNameField, obsCountryField, obsYearField, obsAreaField;
     
     @FXML
@@ -97,6 +97,7 @@ public class MenuFXMLController implements Initializable {
         }
         else if (galData == ae.getSource()){
             galPane.toFront();
+            setChoiceBox();
         }
         else if (stats == ae.getSource()){
             statsPane.toFront();
@@ -105,29 +106,43 @@ public class MenuFXMLController implements Initializable {
     }
     
     @FXML
+    private void setVegColor(JFXRadioButton cv){
+        
+        if (cv.isSelected()){
+                
+                vegColorTxt.setText("Vegetation color is green.");        //Set text showing corresponding vegetation color
+                
+                vegColorTxt.setTextFill(Color.web("#000000"));          //Set color of text showing corresponding vegetation color
+               
+            }
+            else {
+                
+                vegColorTxt.setText("Color of vegetation due to color-value assigned.");
+                
+                vegColorTxt.setTextFill(Color.web("grey"));
+                
+            }
+        
+    }
+    
+    @FXML
     private void controlRadioButtons(ActionEvent ae){
         
         if (cv_ONE == ae.getSource() && !cv_TWO.isSelected() && !cv_THREE.isSelected()){
             
-            vegColorTxt.setText("Vegetation color is green.");        //Set text showing corresponding vegetation color
-                
-            vegColorTxt.setTextFill(Color.web("#000000"));          //Set color of text showing corresponding vegetation color
+            setVegColor(cv_ONE);
             
         }
         
         else if (!cv_ONE.isSelected() && cv_TWO == ae.getSource() && !cv_THREE.isSelected()){
             
-            vegColorTxt.setText("Vegetation color is yellow.");
-                
-            vegColorTxt.setTextFill(Color.web("#000000"));
+            setVegColor(cv_TWO);
             
         }
         
         else if (!cv_ONE.isSelected() && !cv_TWO.isSelected() && cv_THREE == ae.getSource()){
             
-            vegColorTxt.setText("Vegetation color is brown.");
-                
-            vegColorTxt.setTextFill(Color.web("#000000"));
+            setVegColor(cv_THREE);
             
         }
         else {
@@ -155,10 +170,9 @@ public class MenuFXMLController implements Initializable {
                     (obsYearField.getText() == null || obsYearField.getText().trim().isEmpty()) || 
                     (obsAreaField.getText() == null || obsAreaField.getText().trim().isEmpty());
             
-            System.out.println("emptyFields: "+emptyFields);
-            
             if (emptyFields){
                 callAlert("Input Error", "Info: ", "One or more empty fields.");
+                return;
             }
             
             //Handling year input
@@ -180,9 +194,16 @@ public class MenuFXMLController implements Initializable {
             
             if (guiModel.enterObservatoryData(obsName, obsCountry, obsYear, obsArea)){
                 
-                callAlert("Succesful Input", "Info", "New Observatory "+obsNameField.getText()+" added.");
+                callAlert("Succesful Input", "Info: ", "New Observatory "+obsNameField.getText()+" added.");
                 
                 obsNameField.setText(""); obsCountryField.setText(""); obsYearField.setText(""); obsAreaField.setText("");
+            }
+            else {
+                
+                callAlert("Invalid Input", "Info: ", "Possible Error: Duplicate Observatory name. Duplicate names not allowed.");
+                
+                obsNameField.setText(""); obsCountryField.setText(""); obsYearField.setText(""); obsAreaField.setText("");
+                
             }
         }
     }
@@ -197,6 +218,16 @@ public class MenuFXMLController implements Initializable {
         String year;
         
         if (addGal_btn == ae.getSource()){
+            
+            boolean emptyFields = (pos_Latitude.getText() == null || pos_Latitude.getText().trim().isEmpty()) || 
+                    (pos_Longitude.getText() == null || pos_Longitude.getText().trim().isEmpty()) || 
+                    (yearField.getText() == null || yearField.getText().trim().isEmpty()) || 
+                    (galObsName_CB.getSelectionModel().isEmpty());
+            
+            if (emptyFields){
+                callAlert("Input Error", "Info: ", "One or more empty fields.");
+                return;
+            }
             
             //Handling selection of color value
             if (cv_ONE.isSelected() && !cv_TWO.isSelected() && !cv_THREE.isSelected()){
@@ -254,23 +285,25 @@ public class MenuFXMLController implements Initializable {
             //Handling observatory name input
             if (!galObsName_CB.getSelectionModel().isEmpty()){
                 
-                if (guiModel.enterGalamseyData(colorValue, vegColor, latitude, longitude, year, galObsName_CB.getValue()))
+                if (guiModel.enterGalamseyData(colorValue, vegColor, latitude, longitude, year, galObsName_CB.getValue())){
+                    //cv_ONE, cv_TWO, cv_THREE pos_Latitude, pos_Longitude, yearField, 
                     callAlert("Succesful Input", "Info", "New Galamsey added to "+galObsName_CB.getValue());
                 
+                    cv_ONE.setSelected(false); cv_TWO.setSelected(false); cv_THREE.setSelected(false);
+                    pos_Latitude.setText(""); pos_Longitude.setText(""); yearField.setText("");
+                
+                }
+                else {
+                    callAlert("Invalid Input", "Info: ", "Possible Error: Year of galamsey set before selected observatory's commencement year.");
+                }
             }
             
-            
-//            if (guiModel.verifyObservatory(galObsName.getText())) {
-//                
-//                if (guiModel.enterGalamseyData(colorValue, vegColor, latitude, longitude, year, galObsName.getText())) 
-//                    callAlert("Succesful Input", "Info", "New Galamsey added to "+galObsName.getText());
-//                
-//            }
-//            else {
-//                callAlert("Input Error!", "Info: ", "Observatory does not exit. Enter a valid observatory name.");
-//            }
+            else {
+                
+                callAlert("Input Error", "Info: ", "Select an Observatory");
+                
+            }
         }
-        
     }
     
     @FXML

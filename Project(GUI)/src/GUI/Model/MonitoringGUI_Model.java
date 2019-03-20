@@ -41,11 +41,18 @@ public class MonitoringGUI_Model {
         
 	/**
 	 * This method handles all user interactions when creating an observatory.
+         * @param obsName
+         * @param obsCountry
+         * @param obsYear
+         * @param obsArea
+         * @return 
 	 */
 	public boolean enterObservatoryData(String obsName, String obsCountry, String obsYear, double obsArea) {
             
             //New observatory is created
             Observatory o1 = new Observatory(obsName, obsCountry, obsYear, obsArea);
+            
+            if (m1.getObservatories().contains(o1) || getObservatories(obsName)) return false;
             
             //Observatory is now added to monitoring class
             m1.addObservatory(o1);
@@ -64,17 +71,20 @@ public class MonitoringGUI_Model {
          * @param longitude
          * @param year
          * @param obsName
+         * @return 
 	 */
 	public boolean enterGalamseyData(String colorValue, String vegColor, double latitude, double longitude, String year, String obsName) {
             
+            //ID (primary key) of observatory
             Integer obsID = null;
-            
+            //ResultSet for rows in obeservatory table
             ResultSet getObservatory = d1.executeQuery("SELECT * FROM observatory");
             
             try {
                 
                 //Iterate through observatories in database
-                while (getObservatory.next()) {                        
+                while (getObservatory.next()) {
+                    
                     //If observatory name exists, find observatoryID
                     if (getObservatory.getString("Name").equals(obsName)) obsID = getObservatory.getInt("ObservatoryID");
                                 
@@ -90,10 +100,14 @@ public class MonitoringGUI_Model {
             //Iterate through observatories in monitoring to find the right observatory
             for (Observatory obs: m1.getObservatories()){
                 
-                //If observatory found
-                if (obs.getObservatoryName().equals(obsName)) {
+                //This boolean determines if the galamsey's year is the same year of the observatory's commencement
+                //or if it is set later.
+                boolean validGalamseyYear = Integer.parseInt(year) >= Integer.parseInt(obs.getYearOfCommencement());
+                
+                //If observatory found and validGalamseyYear
+                if (obs.getObservatoryName().equals(obsName) && validGalamseyYear) {
                     
-                    //boolean value determining success of insertion into database
+                    //boolean value to determine success of insertion into database
                     boolean dbInsertionSuccess = d1.executeGalamseyInsertion(colorValue, vegColor, latitude, longitude, year, obsID);
                     
                     //If database insertion is valid, add new galamsey event to the right observatory
@@ -111,15 +125,6 @@ public class MonitoringGUI_Model {
             return false;
             
 	}
-	
-	public boolean verifyObservatory(String observatoryName) {
-            
-            for (Observatory obs: m1.getObservatories()){
-                        
-                if (obs.getObservatoryName().equals(observatoryName)) return true;
-            }
-            return false;
-        }
         
         /**
          * Return ArrayList of names of all observatories
@@ -130,11 +135,46 @@ public class MonitoringGUI_Model {
             
             ArrayList<String> obsNames = new ArrayList<String>();
             
-            for (Observatory obs: m1.getObservatories()){
-                        
-                obsNames.add(obs.getObservatoryName());
+            ResultSet rs = d1.executeQuery("SELECT * FROM observatory");
+            
+            try {
+                while (rs.next()){
+                    
+                    obsNames.add(rs.getString("Name"));
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(MonitoringGUI_Model.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             return obsNames;
             
         }
+        
+        /**
+         * This overloaded method accepts an observatory name to verify if it already exists
+         * 
+         * @return 
+         */
+        public boolean getObservatories(String obsName){
+            
+            ResultSet rs = d1.executeQuery("SELECT * FROM observatory");
+            
+            boolean duplicateName;
+            
+            try {
+                while (rs.next()){
+                    
+                    duplicateName = rs.getString("Name").equals(obsName);
+                    if (duplicateName == true) return true;
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(MonitoringGUI_Model.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            return false;
+            
+        }
+        
 }

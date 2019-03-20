@@ -107,6 +107,8 @@ public class Database {
                 pStmnt.setString(2, obsCountry);
                 pStmnt.setString(3, obsYear);
                 pStmnt.setDouble(4, obsArea);
+                
+                pStmnt.execute();
                         
             } catch (Exception e) {
                 
@@ -139,15 +141,17 @@ public class Database {
                 pStmnt.setString(5, year);
                 pStmnt.setInt(6, obsID);
                 
-                return pStmnt.execute();
+                pStmnt.execute();
                         
             } catch (Exception e) {
 
                 System.out.println(e);
+                
+                return false;
 
             }
             
-            return false;
+            return true;
             
         }
         
